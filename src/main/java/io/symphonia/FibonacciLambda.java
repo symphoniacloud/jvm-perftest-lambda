@@ -6,7 +6,9 @@ import io.symphonia.lambda.annotations.CloudwatchMetric;
 import io.symphonia.lambda.metrics.LambdaMetricSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -33,7 +35,10 @@ public class FibonacciLambda {
         LOG.info("Received event = [{}]", event.getId());
         final Metrics metrics = new Metrics();
 
+        // Pass Mapped Diagnostic Context (MDC) into child thread, for logging Request ID
+        Map<String, String> contextMap = MDC.getCopyOfContextMap();
         Runnable task = () -> {
+            MDC.setContextMap(contextMap);
             LOG.info("Starting fibonacci task");
             timedFibonacci(metrics);
         };
