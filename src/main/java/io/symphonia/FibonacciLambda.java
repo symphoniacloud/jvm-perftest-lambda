@@ -36,9 +36,11 @@ public class FibonacciLambda {
         final Metrics metrics = new Metrics();
 
         // Pass Mapped Diagnostic Context (MDC) into child thread, for logging Request ID
-        Map<String, String> contextMap = MDC.getCopyOfContextMap();
+        final Map<String, String> contextMap = MDC.getCopyOfContextMap();
         Runnable task = () -> {
-            MDC.setContextMap(contextMap);
+            if (contextMap != null) {
+                MDC.setContextMap(contextMap);
+            }
             LOG.info("Starting fibonacci task");
             timedFibonacci(metrics);
         };
