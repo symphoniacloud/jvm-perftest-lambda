@@ -1,0 +1,103 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: JVM Lambda Performance Test
+
+Resources:
+
+  FibonacciLambda128:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: io.symphonia.FibonacciLambda::handler
+      Runtime: java8
+      MemorySize: 128
+      Timeout: 240
+      CodeUri: target/lambda.jar
+      Events:
+        ScheduledEvent:
+          Type: Schedule
+          Properties:
+            Schedule: rate(4 minutes)
+
+  FibonacciLambda256:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: io.symphonia.FibonacciLambda::handler
+      Runtime: java8
+      MemorySize: 256
+      Timeout: 240
+      CodeUri: target/lambda.jar
+      Events:
+        ScheduledEvent:
+          Type: Schedule
+          Properties:
+            Schedule: rate(4 minutes)
+
+  FibonacciLambda512:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: io.symphonia.FibonacciLambda::handler
+      Runtime: java8
+      MemorySize: 512
+      Timeout: 240
+      CodeUri: target/lambda.jar
+      Events:
+        ScheduledEvent:
+          Type: Schedule
+          Properties:
+            Schedule: rate(4 minutes)
+
+  FibonacciLambda768:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: io.symphonia.FibonacciLambda::handler
+      Runtime: java8
+      MemorySize: 768
+      Timeout: 240
+      CodeUri: target/lambda.jar
+      Events:
+        ScheduledEvent:
+          Type: Schedule
+          Properties:
+            Schedule: rate(4 minutes)
+
+  FibonacciLambda1024:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: io.symphonia.FibonacciLambda::handler
+      Runtime: java8
+      MemorySize: 1024
+      Timeout: 240
+      CodeUri: target/lambda.jar
+      Events:
+        ScheduledEvent:
+          Type: Schedule
+          Properties:
+            Schedule: rate(4 minutes)
+
+  FibonacciLambda1280:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: io.symphonia.FibonacciLambda::handler
+      Runtime: java8
+      MemorySize: 1280
+      Timeout: 240
+      CodeUri: target/lambda.jar
+      Events:
+        ScheduledEvent:
+          Type: Schedule
+          Properties:
+            Schedule: rate(4 minutes)
+
+  FibonacciLambda1536:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: io.symphonia.FibonacciLambda::handler
+      Runtime: java8
+      MemorySize: 1536
+      Timeout: 240
+      CodeUri: target/lambda.jar
+      Events:
+        ScheduledEvent:
+          Type: Schedule
+          Properties:
+            Schedule: rate(4 minutes)
