@@ -64,11 +64,11 @@ public class FibonacciLambda {
         }
     }
 
-    private Long fibonacci() {
+    private long fibonacci() {
         return fibonacci(FIBONACCI_PARAMETER);
     }
 
-    private Long fibonacci(Long n) {
+    private long fibonacci(long n) {
         if (n == 0 || n == 1) {
             return n;
         } else {
